@@ -37,11 +37,12 @@ master_node_user: "root"
 # NFS VARS ####
 # NFS VARS ####
 nfsHostname: "nfs-server-01"
-IPTargetHost: "10.205.166.219"
+IPnfs: "10.205.166.219"
 
 # Directory NFS
-export_dir: "/share"
-backup_dir: "backup"
+nfs_exports:
+  - "/share/k8s"
+  - "/share/backup"
 k8s_dir: "k8s"
 
 # Vecchie variabili (per compatibilità)

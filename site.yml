@@ -87,7 +87,7 @@
   hosts: masters:new_managers:workers  # Tutti i nodi del cluster
   become: true
   vars:
-    nfs_server: "10.205.166.219"
+    nfs_server: "{{ IPnfs }}"
   roles:
     - role: nfs_client_setup
 
@@ -96,13 +96,9 @@
   hosts: new_managers
   become: true
   vars:
-    nfs_server: "10.205.166.219"
-    nfs_exports:
-      - "/share/k8s"
-      - "/share/backup"
+    nfs_server: "{{ IPnfs }}"  # Aggiungi questa mappatura
   roles:
     - role: nfs_provisioner
-
 
 # NONO PLAY: Deploy Pgadmin
 - hosts: new_managers
